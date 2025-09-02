@@ -53,7 +53,22 @@ class TestBookManager(unittest.TestCase):
     #Lengkapi Unit Test dibawah untuk seluruh buku yang ada di dalam list
     def test_get_all_books(self):
         """Test mendapatkan semua buku"""
-        pass
+        book1 = Book("Bumi", "Tere Liye", 2014)
+        book2 = Book("Matahari", "Tere Liye", 2016)
+        book3 = Book("Laskar Pelangi", "Andrea Hirata", 2005)
+
+        self.book_manager.add_book(book1)
+        self.book_manager.add_book(book2)
+        self.book_manager.add_book(book3)
+        
+        result = self.book_manager.get_all_books()
+        self.assertEqual(len(self.book_manager), 3)
+
+        # Pastikan semua buku ada dalam hasil
+        self.assertIn(book1, result)
+        self.assertIn(book2, result)
+        self.assertIn(book3, result)
+        
 
 if __name__ == '__main__':
     unittest.main()
