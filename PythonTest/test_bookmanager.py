@@ -62,7 +62,7 @@ class TestBookManager(unittest.TestCase):
         self.book_manager.add_book(book3)
         
         result = self.book_manager.get_all_books()
-        self.assertEqual(len(self.book_manager), 3)
+        self.assertEqual(len(result), 3)
 
         # Pastikan semua buku ada dalam hasil
         self.assertIn(book1, result)
