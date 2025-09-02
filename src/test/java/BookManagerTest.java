@@ -44,6 +44,10 @@ public class BookManagerTest {
     @Test
     @DisplayName("Test mencari buku berdasarkan author")
     void testFindBooksByAuthor() {
+        Book book = new Book("Bumi", "Tere Liye", 2014);
+        bookManager.addBook(book);
+        bookManager.findBooksByAuthor("Tere Liye");
+        assertEquals(1, bookManager.getBookCount());
     }
 
     // Menguji Unit Test dibawah untuk seluruh buku yang ada di dalam list
