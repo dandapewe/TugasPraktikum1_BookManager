@@ -9,7 +9,7 @@ describe('BookManager', () => {
   });
 
   test('Test menambahkan buku', () => {
-    const book = new Book("Bumi", "TTere Liye", 2014);
+    const book = new Book("Bumi", "Tere Liye", 2014);
     bookManager.addBook(book);
     expect(bookManager.getBookCount()).toBe(1);
   });
@@ -18,7 +18,7 @@ describe('BookManager', () => {
     const book = new Book("Bumi", "Tere Liye", 2014);
     bookManager.addBook(book);
 
-    const removed = bookManager.removeBook("To Remove");
+    const removed = bookManager.removeBook("Bumi");
     expect(removed).toBe(true);
     expect(bookManager.getBookCount()).toBe(0);
   });
@@ -36,11 +36,11 @@ describe('BookManager', () => {
   // Unit Test: mencari buku berdasarkan penulis
   test('Test mencari buku berdasarkan author', () => {
     const book1 = new Book("Bumi", "Tere Liye", 2014);
-    const book2 = new Book("Matahari", "Tere Liye", 2016);
+    const book2 = new Book("Laskar Pelangi", "Andrea Hirata", 2005);
     bookManager.addBook(book1);
     bookManager.addBook(book2);
 
-    const result = bookManager.findBooksByAuthor("Author c");
+    const result = bookManager.findBooksByAuthor("Tere Liye");
     expect(result).toContainEqual(book1);
     expect(result).not.toContainEqual(book2);
   });
@@ -53,7 +53,7 @@ describe('BookManager', () => {
     bookManager.addBook(book2);
 
     const allBooks = bookManager.getAllBooks();
-    expect(allBooks.length).toBe(1);
+    expect(allBooks.length).toBe(2);
     expect(allBooks).toContainEqual(book1);
     expect(allBooks).toContainEqual(book2);
   });
