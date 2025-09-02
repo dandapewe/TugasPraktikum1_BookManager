@@ -28,7 +28,7 @@ public class BookManagerTest {
     void testRemoveBook() {
         Book book = new Book("Database", "Erlangga", 2021);
         bookManager.addBook(book);
-        bookManager.removeBook("Basis Data");
+        bookManager.removeBook("Database");
         assertEquals(0, bookManager.getBookCount());
     }
 
@@ -44,15 +44,38 @@ public class BookManagerTest {
     @Test
     @DisplayName("Test mencari buku berdasarkan author")
     void testFindBooksByAuthor() {
-        Book book = new Book("Bumi", "Tere Liye", 2014);
-        bookManager.addBook(book);
-        bookManager.findBooksByAuthor("Tere Liye");
-        assertEquals(1, bookManager.getBookCount());
+        Book book1 = new Book("Bumi", "Tere Liye", 2014);
+        Book book2 = new Book("Matahari", "Tere Liye", 2016);
+        Book book3 = new Book("Laskar Pelangi", "Andrea Hirata", 2005);
+
+        bookManager.addBook(book1);
+        bookManager.addBook(book2);
+        bookManager.addBook(book3);
+
+        List<Book> result = bookManager.findBooksByAuthor("Tere Liye");
+
+        assertEquals(2, result.size());
+        assertTrue(result.contains(book1));
+        assertTrue(result.contains(book2));
     }
 
     // Menguji Unit Test dibawah untuk seluruh buku yang ada di dalam list
     @Test
     @DisplayName("Test mendapatkan semua buku")
     void testGetAllBooks() {
+        Book book1 = new Book("Bumi", "Tere Liye", 2014);
+        Book book2 = new Book("Matahari", "Tere Liye", 2016);
+        Book book3 = new Book("Laskar Pelangi", "Andrea Hirata", 2005);
+
+        bookManager.addBook(book1);
+        bookManager.addBook(book2);
+        bookManager.addBook(book3);
+
+        List<Book> result = bookManager.getAllBooks();
+
+        assertEquals(3, result.size());
+        assertTrue(result.contains(book1));
+        assertTrue(result.contains(book2));
+        assertTrue(result.contains(book3));
     }
 }
