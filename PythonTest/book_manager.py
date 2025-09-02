@@ -44,3 +44,6 @@ class BookManager:
 
     def clear_all_books(self) -> None:
         self.books.clear()
+
+    def get_book_count(self) -> int:
+        return len(self.books)
