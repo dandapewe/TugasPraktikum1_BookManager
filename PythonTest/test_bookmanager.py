@@ -35,7 +35,20 @@ class TestBookManager(unittest.TestCase):
     #Lengkapi Unit Test dibawah untuk mencari buku berdasarkan penulis
     def test_find_books_by_author(self):
         """Test mencari buku berdasarkan author"""
-        pass
+        book1 = Book("Bumi", "Tere Liye", 2014)
+        book2 = Book("Matahari", "Tere Liye", 2016)
+        book3 = Book("Laskar Pelangi", "Andrea Hirata", 2005)
+
+        self.book_manager.add_book(book1)
+        self.book_manager.add_book(book2)
+        self.book_manager.add_book(book3)
+
+        result = self.book_manager.find_books_by_author("Tere Liye")
+        self.assertIn(book1, result)
+        self.assertIn(book2, result)
+        self.assertNotIn(book3, result)
+        self.assertEqual(len(result), 2)
+        
 
     #Lengkapi Unit Test dibawah untuk seluruh buku yang ada di dalam list
     def test_get_all_books(self):
